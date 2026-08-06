@@ -1,6 +1,6 @@
 /**
  * 🤖 Shahid AI Chatbot Component
- * Portfolio virtual assistant powered by Gemini API
+ * Portfolio virtual assistant powered by Gemini API with LocalStorage persistence
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. State Management
     let messageHistory = [];
     let isWaitingForResponse = false;
+    const STORAGE_KEY = "shahid_ai_chat_history";
 
     // DOM Elements
     const toggleBtn = document.getElementById("ai-chat-toggle");
@@ -23,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const suggestionsBox = document.getElementById("ai-chat-suggestions");
 
     let isOpened = false;
+
+    // Load persisted chat history on initialization
+    loadHistoryFromStorage();
 
     // 3. Event Listeners
     toggleBtn.addEventListener("click", toggleChat);
@@ -76,12 +80,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function clearChat() {
         messageHistory = [];
+        try {
+            localStorage.removeItem(STORAGE_KEY);
+        } catch (e) {
+            console.error("Failed to clear localStorage:", e);
+        }
         messagesContainer.innerHTML = "";
+        
+        if (suggestionsBox) {
+            suggestionsBox.style.display = "flex";
+        }
+        
         // Re-inject initial bot welcome message
         appendBotMessage(
             "Hi there! 👋 I'm **Shahid AI**, Muhammed Shahid's virtual assistant. Ask me anything about Shahid's projects, skills, education, or background!",
+            getCurrentTimeStr(),
             true
         );
+    }
+
+    function saveHistoryToStorage() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(messageHistory));
+        } catch (e) {
+            console.error("Failed to save chat history to localStorage:", e);
+        }
+    }
+
+    function loadHistoryFromStorage() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    messageHistory = parsed;
+                    messagesContainer.innerHTML = "";
+
+                    if (suggestionsBox) {
+                        suggestionsBox.style.display = "none";
+                    }
+
+                    parsed.forEach((msg) => {
+                        const time = msg.timestamp || getCurrentTimeStr();
+                        if (msg.role === "user") {
+                            appendUserMessage(msg.content, time, false);
+                        } else {
+                            appendBotMessage(msg.content, time, false);
+                        }
+                    });
+                }
+            }
+        } catch (e) {
+            console.error("Failed to load chat history from localStorage:", e);
+        }
     }
 
     // 4. Message Handling
@@ -97,11 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
             suggestionsBox.style.display = "none";
         }
 
-        // Render user message
-        appendUserMessage(text);
-        
-        // Push to local context history
-        messageHistory.push({ role: "user", content: text });
+        const nowTime = getCurrentTimeStr();
+
+        // Render user message & save
+        appendUserMessage(text, nowTime, false);
+        messageHistory.push({ role: "user", content: text, timestamp: nowTime });
+        saveHistoryToStorage();
 
         // Show typing indicator
         isWaitingForResponse = true;
@@ -122,16 +174,24 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await res.json();
             typingEl.remove();
 
+            const replyTime = getCurrentTimeStr();
             if (res.ok && data.reply) {
-                appendBotMessage(data.reply);
-                messageHistory.push({ role: "assistant", content: data.reply });
+                appendBotMessage(data.reply, replyTime, false);
+                messageHistory.push({ role: "assistant", content: data.reply, timestamp: replyTime });
+                saveHistoryToStorage();
             } else {
-                appendBotMessage(data.error || "Sorry, I ran into an issue answering that. Please try again!");
+                const errorMsg = data.error || "Sorry, I ran into an issue answering that. Please try again!";
+                appendBotMessage(errorMsg, replyTime, false);
+                messageHistory.push({ role: "assistant", content: errorMsg, timestamp: replyTime });
+                saveHistoryToStorage();
             }
         } catch (err) {
             console.error("Chat Error:", err);
             typingEl.remove();
-            appendBotMessage("Connection error. Please check your network and try again.");
+            const errText = "Connection error. Please check your network and try again.";
+            appendBotMessage(errText, getCurrentTimeStr(), false);
+            messageHistory.push({ role: "assistant", content: errText, timestamp: getCurrentTimeStr() });
+            saveHistoryToStorage();
         } finally {
             isWaitingForResponse = false;
             sendBtn.disabled = false;
@@ -141,8 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Render User Bubble
-    function appendUserMessage(text) {
-        const timeStr = getCurrentTimeStr();
+    function appendUserMessage(text, timeStr = getCurrentTimeStr()) {
         const wrapper = document.createElement("div");
         wrapper.className = "flex justify-end mb-4 animate-fade-in";
         wrapper.innerHTML = `
@@ -158,8 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Render Bot Bubble with Markdown parsing
-    function appendBotMessage(text, isInitial = false) {
-        const timeStr = getCurrentTimeStr();
+    function appendBotMessage(text, timeStr = getCurrentTimeStr(), isInitial = false) {
         const wrapper = document.createElement("div");
         wrapper.className = "flex items-start gap-2.5 mb-4 animate-fade-in";
         
