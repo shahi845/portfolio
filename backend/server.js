@@ -105,39 +105,72 @@ app.post("/api/contact", async (req, res) => {
             return res.status(400).json({ error: "Name, email, and message are required" });
         }
 
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.log("Contact form submission received:", { name, email, subject, message });
-            return res.status(200).json({ success: "Message received! (Demo mode - set EMAIL_USER and EMAIL_PASS to send real emails)" });
-        }
-
         const cleanName = xss(name);
         const cleanEmail = xss(email);
-        const cleanSubject = xss(subject || "No Subject");
+        const cleanSubject = xss(subject || "Portfolio Contact");
         const cleanMessage = xss(message);
+        const targetEmail = process.env.EMAIL_TO || "mshahid3845@gmail.com";
 
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
+        // Option 1: Send using Nodemailer if SMTP credentials are configured
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user: process.env.EMAIL_USER,
+                    pass: process.env.EMAIL_PASS
+                }
+            });
+
+            const mailOptions = {
+                from: process.env.EMAIL_USER,
+                to: targetEmail,
+                replyTo: cleanEmail,
+                subject: `[Portfolio Contact] ${cleanSubject} - from ${cleanName}`,
+                text: `Name: ${cleanName}\nEmail: ${cleanEmail}\nSubject: ${cleanSubject}\n\nMessage:\n${cleanMessage}`
+            };
+
+            await transporter.sendMail(mailOptions);
+            return res.status(200).json({ success: `Message sent successfully to ${targetEmail}!` });
+        }
+
+        // Option 2: Automatic FormSubmit API forwarder to mshahid3845@gmail.com
+        try {
+            const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: cleanName,
+                    email: cleanEmail,
+                    _subject: `[Portfolio Contact] ${cleanSubject} - from ${cleanName}`,
+                    message: cleanMessage,
+                    _replyto: cleanEmail,
+                    _template: "table"
+                })
+            });
+
+            if (formSubmitRes.ok) {
+                return res.status(200).json({ success: `Message sent successfully to ${targetEmail}!` });
             }
+        } catch (fsErr) {
+            console.warn("FormSubmit server dispatch notice:", fsErr);
+        }
+
+        // Option 3: Fallback mailto URL
+        const encodedSubject = encodeURIComponent(`Portfolio Contact: ${cleanSubject}`);
+        const encodedBody = encodeURIComponent(`Name: ${cleanName}\nEmail: ${cleanEmail}\n\nMessage:\n${cleanMessage}`);
+        const mailtoUrl = `mailto:${targetEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+
+        return res.status(200).json({
+            success: "Message processed!",
+            mailtoUrl: mailtoUrl
         });
-
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            replyTo: cleanEmail,
-            subject: `Portfolio Contact: ${cleanSubject}`,
-            text: `Name: ${cleanName}\nEmail: ${cleanEmail}\n\nMessage:\n${cleanMessage}`
-        };
-
-        await transporter.sendMail(mailOptions);
-
-        res.status(200).json({ success: "Message sent successfully!" });
 
     } catch (err) {
         console.error("Mailing Error:", err);
-        res.status(500).json({ error: "Failed to send message" });
+        res.status(500).json({ error: "Failed to send message. Please try again." });
     }
 });
 
