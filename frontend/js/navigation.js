@@ -21,8 +21,20 @@ themeToggleBtn?.addEventListener('click', () => {
 const nav = document.getElementById('navbar');
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
+const progressBar = document.getElementById('scroll-progress-bar');
+
+function updateScrollProgress() {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercentage))}%`;
+}
 
 window.addEventListener('scroll', () => {
+    // Update top progress bar
+    updateScrollProgress();
+
     // Navbar styling
     if (window.scrollY > 50) {
         nav?.classList.add('shadow-lg', 'bg-white/80', 'dark:bg-slate-900/80', 'backdrop-blur-md'); 
@@ -50,7 +62,11 @@ window.addEventListener('scroll', () => {
             link.classList.add('text-slate-500', 'dark:text-slate-400');
         }
     });
-});
+}, { passive: true });
+
+window.addEventListener('resize', updateScrollProgress, { passive: true });
+document.addEventListener('DOMContentLoaded', updateScrollProgress);
+updateScrollProgress();
 
 // --- Mobile Menu ---
 const mobileMenuButton = document.getElementById("mobile-menu-btn");
