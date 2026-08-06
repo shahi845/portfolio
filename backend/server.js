@@ -112,25 +112,29 @@ app.post("/api/contact", async (req, res) => {
         const targetEmail = process.env.EMAIL_TO || "mshahid3845@gmail.com";
 
         // Option 1: Send using Nodemailer if SMTP credentials are configured
-        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            const transporter = nodemailer.createTransport({
-                service: "gmail",
-                auth: {
-                    user: process.env.EMAIL_USER,
-                    pass: process.env.EMAIL_PASS
-                }
-            });
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS && process.env.EMAIL_PASS.trim() !== "") {
+            try {
+                const transporter = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                        user: process.env.EMAIL_USER,
+                        pass: process.env.EMAIL_PASS
+                    }
+                });
 
-            const mailOptions = {
-                from: process.env.EMAIL_USER,
-                to: targetEmail,
-                replyTo: cleanEmail,
-                subject: `[Portfolio Contact] ${cleanSubject} - from ${cleanName}`,
-                text: `Name: ${cleanName}\nEmail: ${cleanEmail}\nSubject: ${cleanSubject}\n\nMessage:\n${cleanMessage}`
-            };
+                const mailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: targetEmail,
+                    replyTo: cleanEmail,
+                    subject: `[Portfolio Contact] ${cleanSubject} - from ${cleanName}`,
+                    text: `Name: ${cleanName}\nEmail: ${cleanEmail}\nSubject: ${cleanSubject}\n\nMessage:\n${cleanMessage}`
+                };
 
-            await transporter.sendMail(mailOptions);
-            return res.status(200).json({ success: `Message sent successfully to ${targetEmail}!` });
+                await transporter.sendMail(mailOptions);
+                return res.status(200).json({ success: `Message sent successfully to ${targetEmail}!` });
+            } catch (smtpErr) {
+                // Fall through cleanly to FormSubmit fallback without emitting raw console warnings
+            }
         }
 
         // Option 2: Automatic FormSubmit API forwarder to mshahid3845@gmail.com
@@ -155,7 +159,7 @@ app.post("/api/contact", async (req, res) => {
                 return res.status(200).json({ success: `Message sent successfully to ${targetEmail}!` });
             }
         } catch (fsErr) {
-            console.warn("FormSubmit server dispatch notice:", fsErr);
+            // Fallback silently if network or service error occurs
         }
 
         // Option 3: Fallback mailto URL
