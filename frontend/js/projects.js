@@ -248,6 +248,49 @@ openModalBtns.forEach(btn => {
     });
 });
 
+// --- Fullscreen Video Walkthrough Handler ---
+const fsBtn = document.getElementById('modalVideoFullscreenBtn');
+const videoFrame = document.getElementById('modalVideoFrame');
+const videoDisplay = document.getElementById('modalVideoDisplay');
+
+function toggleVideoFullscreen() {
+    if (!videoFrame) return;
+    if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+    } else if (videoFrame.requestFullscreen) {
+        videoFrame.requestFullscreen().catch(() => {
+            videoFrame.classList.toggle('fixed');
+            videoFrame.classList.toggle('inset-2');
+            videoFrame.classList.toggle('z-50');
+        });
+    } else {
+        videoFrame.classList.toggle('fixed');
+        videoFrame.classList.toggle('inset-2');
+        videoFrame.classList.toggle('z-50');
+    }
+}
+
+fsBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleVideoFullscreen();
+});
+
+videoDisplay?.addEventListener('click', () => {
+    toggleVideoFullscreen();
+});
+
+document.addEventListener('fullscreenchange', () => {
+    const fsIcon = document.getElementById('modalVideoFsIcon');
+    const fsText = document.getElementById('modalVideoFsText');
+    if (document.fullscreenElement) {
+        if (fsIcon) fsIcon.className = 'fas fa-compress';
+        if (fsText) fsText.textContent = 'Exit';
+    } else {
+        if (fsIcon) fsIcon.className = 'fas fa-expand';
+        if (fsText) fsText.textContent = 'Fullscreen';
+    }
+});
+
 closeModalBtn?.addEventListener('click', () => {
     modal.close();
     document.body.style.overflow = '';
