@@ -126,13 +126,14 @@ function initTerminalMode() {
 
     const commands = {
         'help': `Available commands:
-  • <span class="text-cyan-400">about</span>     - Brief biography
-  • <span class="text-cyan-400">skills</span>    - List core tech stack
-  • <span class="text-cyan-400">projects</span>  - List key projects
-  • <span class="text-cyan-400">contact</span>   - Get contact info
-  • <span class="text-cyan-400">resume</span>    - Open resume viewer
-  • <span class="text-cyan-400">clear</span>     - Clear terminal screen
-  • <span class="text-cyan-400">exit</span>      - Close terminal`,
+  • <span class="text-cyan-400">about</span>      - Brief biography & coding background
+  • <span class="text-cyan-400">skills</span>     - Core technical stack
+  • <span class="text-cyan-400">projects</span>   - List key projects & live links
+  • <span class="text-cyan-400">philosophy</span> - Coding principles & mindset
+  • <span class="text-cyan-400">contact</span>    - Direct contact details
+  • <span class="text-cyan-400">resume</span>     - Open resume viewer modal
+  • <span class="text-cyan-400">clear</span>      - Clear terminal screen
+  • <span class="text-cyan-400">exit</span>       - Close terminal`,
 
         'about': `Muhammed Shahid | Full Stack Developer
 Location: Kasaragod, Kerala, India
@@ -148,6 +149,10 @@ Tools:     Git, GitHub, VS Code, Linux`,
 2. Interactive Web Calculator (Live: https://e-calculator.mshahid3845.workers.dev)
 3. Personal Portfolio (Live: https://shahidportfolio.mshahid3845.workers.dev)
 4. Tuhfa Football Association Dashboard (Live: https://tfa-2.mshahid3845.workers.dev)`,
+
+        'philosophy': `1. Deterministic Math & Exact Fractions (0% Float Error)
+2. Zero Dependency Bloat & High Performance
+3. Purposeful Server-Side AI Engineering`,
 
         'contact': `Email: mshahid3845@gmail.com
 GitHub: https://github.com/shahi845
