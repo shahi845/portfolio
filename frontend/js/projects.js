@@ -1,66 +1,106 @@
-// --- Project Filtering ---
+// --- Project & Stack Filtering ---
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
+function filterProjects(filterValue) {
+    // Update active filter button state
+    filterBtns.forEach(b => {
+        const val = b.getAttribute('data-filter');
+        if (val === filterValue) {
+            b.classList.add('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_12px_rgba(59,130,246,0.3)]');
+            b.classList.remove('text-slate-500');
+        } else {
+            b.classList.remove('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_12px_rgba(59,130,246,0.3)]');
+            b.classList.add('text-slate-500');
+        }
+    });
+
+    // Show/hide cards matching category OR technology tag
+    projectCards.forEach(card => {
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        if (filterValue === 'all' || card.classList.contains(filterValue) || tags.includes(filterValue.toLowerCase())) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
-            b.classList.remove('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_10px_rgba(59,130,246,0.3)]');
-            b.classList.add('text-slate-500');
-        });
-        
-        btn.classList.add('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_10px_rgba(59,130,246,0.3)]');
-        btn.classList.remove('text-slate-500');
-
         const filterValue = btn.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-            if (filterValue === 'all' || card.classList.contains(filterValue)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+        filterProjects(filterValue);
     });
+});
+
+// Allow tech badge clicks across the page to filter projects
+document.addEventListener('click', (e) => {
+    const techTag = e.target.closest('.interactive-tech-tag');
+    if (techTag) {
+        const tech = techTag.getAttribute('data-tech');
+        if (tech) {
+            filterProjects(tech);
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }
 });
 
 // --- Case Study Modal ---
 const caseStudyData = {
-    'portfolio': {
-        title: 'Personal Portfolio',
-        problem: 'The previous iteration of the portfolio lacked professional credibility and felt cluttered with sections that overstated skills and experience.',
-        goals: 'Create a portfolio that clearly communicates actual skills and projects with an accessible, modern design.',
-        architecture: 'Built with pure HTML, JavaScript and Tailwind CSS. Refactored into modular CSS and JS files to improve maintainability.',
-        challenges: 'Balancing visual density and performance. Heavy use of backdrop filters and mesh gradients required careful optimization.',
-        solution: 'Simplified the content to honest claims, removed marketing buzzwords, split code into separate files.',
-        lessons: 'Credibility matters more than self-promotion. A simpler and more honest portfolio communicates better than an overclaimed one.',
-        stack: ['HTML5', 'TailwindCSS', 'JavaScript', 'Node.js'],
-        live: 'https://shahidportfolio.mshahid3845.workers.dev',
-        code: 'https://github.com/shahi845/shahidportfolio'
+    'faraid': {
+        title: "Fara'id Inheritance Calculator Engine",
+        subtitle: "Multi-madhhab Islamic inheritance fraction & distribution algorithm",
+        problem: "Classical Islamic inheritance jurisprudence involves intricate fraction calculations, heir blocking rules (Hajb), residuary distribution (Asabah), and proportional adjustments (Awl & Radd). Most online calculators struggle with multi-madhhab differences and fail edge-case tests.",
+        goals: "Design an accurate, testable JavaScript engine capable of processing shares across Shafi'i, Hanafi, Maliki, and Hanbali madhhabs with zero floating-point rounding errors.",
+        architecture: "Utilizes a rule-based Pipeline Pattern in pure ES6 JavaScript. Shares are computed strictly using rational fractions (numerator/denominator) before converting to percentages, preventing precision loss.",
+        challenges: "Translating classical Arabic jurisprudential treatises into strict algorithmic logic, handling edge cases like Umariyyatan (Gharrawain), and rendering clean, shareable PDF reports with PDF-Lib.",
+        solution: "Built an engine with automated unit tests for over 30 test cases, custom fraction math utilities, heir input validation, and instantaneous share breakdown UI.",
+        lessons: "Mastered exact fraction math in JS, pipeline architecture patterns, and domain-driven algorithmic design.",
+        stack: ['JavaScript (ES6)', 'Cloudflare Workers', 'Vercel', 'Exact Fractions', 'PDF-Lib', 'Tailwind CSS'],
+        live: 'https://fara-id.vercel.app',
+        code: 'https://github.com/shahi845/inheritance-calculator'
     },
     'calculator': {
-        title: 'Interactive Web Calculator',
-        problem: 'Standard browser calculators do not handle proper operator precedence for complex expressions.',
-        goals: 'Build a responsive browser calculator with correct math precedence and keyboard support.',
-        architecture: 'Written in Vanilla JavaScript with DOM-based state management. Uses an expression parser for operator precedence.',
-        challenges: 'Handling edge cases like negative numbers, decimal precision, and sequential operations required careful logic.',
-        solution: 'Built a browser-based calculator with operator precedence, keyboard support and responsive controls.',
-        lessons: 'Gained understanding of expression parsing and careful handling of floating-point edge cases in JavaScript.',
-        stack: ['Vanilla JS', 'CSS3', 'HTML5'],
+        title: "Interactive Precision Web Calculator",
+        subtitle: "Expression parsing browser calculator with operator precedence",
+        problem: "Basic web calculators calculate results sequentially without observing mathematical operator precedence (BODMAS/PEMDAS), leading to incorrect evaluations for multi-operator expressions.",
+        goals: "Construct a clean, responsive browser calculator with real-time expression parsing, full keyboard navigation, and edge-case handling.",
+        architecture: "Vanilla JavaScript using an expression tokenization and stack parsing approach. DOM state handlers trigger smooth UI updates on keystroke or click.",
+        challenges: "Handling decimal edge cases, prevent double operators, and ensuring responsive touch controls for mobile screen sizes.",
+        solution: "Delivered a lightweight web app deployed on Cloudflare Workers with full keyboard shortcut bindings and high contrast visual feedback.",
+        lessons: "Deepened understanding of stack data structures, event listeners, keyboard navigation accessibility, and edge computing deployment.",
+        stack: ['JavaScript', 'HTML5', 'CSS3', 'Cloudflare Workers', 'Stack Parser'],
         live: 'https://e-calculator.mshahid3845.workers.dev/',
-        code: 'https://github.com/shahi845/e-calculator'
+        code: 'https://github.com/shahi845/calculator'
     },
-    'faraid': {
-        title: "Fara'id Calculator",
-        problem: 'Existing Islamic inheritance calculators often lack the ability to customize for specific madhabs and struggle with fractional mathematics.',
-        goals: 'Build a JavaScript inheritance engine for multiple madhabs with fraction handling and a clear output for heirs.',
-        architecture: 'Designed a rule-based Pipeline architecture in JavaScript. Each inheritance rule (Awl, Radd, Hajb) is processed as a distinct step, making the logic readable and testable.',
-        challenges: 'Translating classical jurisprudential rules into strict mathematical logic required intensive research and systematic testing.',
-        solution: 'Built a JavaScript inheritance engine with fraction handling, heir blocking, awl and radd logic. Supports Shafi\'i, Hanafi, Maliki and Hanbali modes with case-specific tests. Madhhab-specific testing is ongoing.',
-        lessons: 'Learned the Pipeline design pattern for sequential rule processing and working with exact fractions in JavaScript.',
-        stack: ['JavaScript', 'Data Structures', 'PDF-Lib'],
-        live: 'https://inheritancecalculator.mshahid3845.workers.dev',
-        code: 'https://github.com/shahi845/faraid-calculator'
+    'portfolio': {
+        title: "Full Stack Personal Portfolio",
+        subtitle: "Glassmorphic website with AI Assistant & Node.js backend",
+        problem: "Standard template portfolios often feel generic and lack interactive proof of technical competence, AI integration, or server-side communication.",
+        goals: "Build a modern, lightning-fast portfolio featuring glassmorphic design, Gemini AI chat assistant, command palette (Ctrl+K), retro CLI terminal, and Node.js contact backend.",
+        architecture: "Client built with HTML5, CSS3 aurora mesh, and Tailwind CSS; Node.js Express server acting as API proxy for Gemini AI and email delivery.",
+        challenges: "Maintaining WCAG contrast ratios with dark glassmorphism, disabling HMR artifacts, and implementing smooth non-blocking micro-animations.",
+        solution: "Created an interactive web portfolio with live GitHub API stats, command search palette, AI chat assistant, and responsive layout.",
+        lessons: "Enhanced full-stack Node.js development, REST API design, rate-limiting, and AI prompt engineering.",
+        stack: ['Node.js', 'Express', 'Gemini AI API', 'Tailwind CSS', 'JavaScript', 'Cloudflare'],
+        live: 'https://shahidportfolio.mshahid3845.workers.dev/',
+        code: 'https://github.com/shahi845/personal-portfolio'
+    },
+    'tfa': {
+        title: "Tuhfa Football Association Dashboard",
+        subtitle: "Real-time league standings, fixtures, and player analytics platform",
+        problem: "Local sports associations struggle with outdated static schedules and delayed match results for players and fans.",
+        goals: "Develop a mobile-first sports tournament dashboard displaying live league tables, match results, top goal scorers, and player statistics.",
+        architecture: "Single Page Application using dynamic JavaScript rendering arrays into clean, sorted HTML table structures.",
+        challenges: "Designing dense tabular data layouts that remain legible on mobile screens without overflow issues.",
+        solution: "Implemented auto-sorting standings tables with tie-breaker logic (goal difference, head-to-head) and quick player search.",
+        lessons: "Mastered data sorting algorithms, responsive CSS grid/table layouts, and user-centric data presentation.",
+        stack: ['JavaScript', 'HTML5', 'Tailwind CSS', 'Cloudflare Workers', 'Data Sorting'],
+        live: 'https://tfa-2.mshahid3845.workers.dev',
+        code: 'https://github.com/shahi845/2tfa'
     }
 };
 
@@ -74,6 +114,9 @@ openModalBtns.forEach(btn => {
         const data = caseStudyData[projectId];
         if (data) {
             document.getElementById('modalTitle').textContent = data.title;
+            const subtitleEl = document.getElementById('modalSubtitle');
+            if (subtitleEl) subtitleEl.textContent = data.subtitle;
+
             document.getElementById('modalProblem').textContent = data.problem;
             document.getElementById('modalGoals').textContent = data.goals;
             document.getElementById('modalArchitecture').textContent = data.architecture;
@@ -82,7 +125,11 @@ openModalBtns.forEach(btn => {
             document.getElementById('modalLessons').textContent = data.lessons;
             
             const stackContainer = document.getElementById('modalStack');
-            stackContainer.innerHTML = data.stack.map(tech => `<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono font-bold">${tech}</span>`).join('');
+            stackContainer.innerHTML = data.stack.map(tech => `
+                <button type="button" class="interactive-tech-tag px-3 py-1 bg-brand-500/10 hover:bg-brand-500/20 text-brand-400 border border-brand-500/20 rounded-lg text-xs font-mono font-bold transition cursor-pointer" data-tech="${tech}">
+                    ${tech}
+                </button>
+            `).join('');
             
             document.getElementById('modalLiveLink').href = data.live;
             document.getElementById('modalCodeLink').href = data.code;
@@ -105,7 +152,6 @@ modal?.addEventListener('click', (e) => {
     }
 });
 
-// Close modal on Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal?.open) {
         modal.close();
@@ -116,9 +162,9 @@ document.addEventListener('keydown', (e) => {
 // --- GitHub Repos Fetch ---
 async function fetchGitHubRepos() {
     const container = document.getElementById("github-repos");
-    if (!container) return; // Fix: Only run if container exists
+    if (!container) return;
     
-    container.innerHTML = Array(3).fill('<div class="h-32 rounded-xl skeleton"></div>').join('');
+    container.innerHTML = Array(3).fill('<div class="h-36 rounded-2xl skeleton"></div>').join('');
     try {
         const res = await fetch("https://api.github.com/users/shahi845/repos?sort=updated&per_page=6");
         if (res.ok) {
@@ -126,17 +172,30 @@ async function fetchGitHubRepos() {
             container.innerHTML = "";
             repos.forEach(repo => {
                 container.innerHTML += `
-      <div class="glass glass-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up">
-        <h3 class="font-bold text-lg mb-1">${repo.name}</h3>
-        <p class="text-xs text-slate-500 mb-2 flex-1">${repo.description || "No description provided."}</p>
-        <div class="flex gap-4 text-xs font-mono text-slate-400">
-          <span>${repo.language || 'Unknown'}</span>
-          <span>⭐ ${repo.stargazers_count}</span>
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-brand-500"><i class="fas fa-external-link-alt"></i> Link</a>
-        </div>
-      </div>`;
+                <div class="glass glass-card p-5 rounded-2xl flex flex-col h-full border border-slate-200/40 dark:border-slate-800 hover:border-brand-500/40 transition" data-aos="fade-up">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-base text-slate-900 dark:text-white truncate flex items-center">
+                            <i class="fab fa-github text-brand-400 mr-2"></i> ${repo.name}
+                        </h4>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                            ${repo.language || 'Code'}
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 flex-1 line-clamp-2 leading-relaxed">
+                        ${repo.description || "Open source project repository by Muhammed Shahid."}
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-200/40 dark:border-slate-800 text-xs font-mono text-slate-400">
+                        <span class="flex items-center gap-1"><i class="far fa-star text-amber-400"></i> ${repo.stargazers_count}</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-code-branch text-blue-400"></i> ${repo.forks_count}</span>
+                        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="text-brand-400 font-bold hover:underline flex items-center gap-1">
+                            Repo <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>`;
             });
         }
-    } catch (err) { container.innerHTML = ""; }
+    } catch (err) { 
+        container.innerHTML = `<p class="text-slate-400 text-sm col-span-3">View all repositories directly on <a href="https://github.com/shahi845" target="_blank" class="text-brand-400 underline">GitHub @shahi845</a>.</p>`; 
+    }
 }
 fetchGitHubRepos();
