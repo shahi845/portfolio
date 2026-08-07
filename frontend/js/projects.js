@@ -53,6 +53,9 @@ const caseStudyData = {
     'faraid': {
         title: "Fara'id Inheritance Calculator Engine",
         subtitle: "Multi-madhhab Islamic inheritance fraction & distribution algorithm",
+        videoTitle: "Fara'id Engine Algorithmic Walkthrough",
+        videoBadge: "⏱️ 50-Sec Walkthrough",
+        videoHeadline: "50-Second Calculation & PDF Report Demonstration",
         problem: "Classical Islamic inheritance jurisprudence involves intricate fraction calculations, heir blocking rules (Hajb), residuary distribution (Asabah), and proportional adjustments (Awl & Radd). Most online calculators struggle with multi-madhhab differences and fail edge-case tests.",
         goals: "Design an accurate, testable JavaScript engine capable of processing shares across Shafi'i, Hanafi, Maliki, and Hanbali madhhabs with zero floating-point rounding errors.",
         architecture: "Utilizes a rule-based Pipeline Pattern in pure ES6 JavaScript. Shares are computed strictly using rational fractions (numerator/denominator) before converting to percentages, preventing precision loss.",
@@ -88,6 +91,9 @@ const caseStudyData = {
     'calculator': {
         title: "Interactive Precision Web Calculator",
         subtitle: "Expression parsing browser calculator with operator precedence",
+        videoTitle: "Calculator Operator Precedence Walkthrough",
+        videoBadge: "⏱️ 35-Sec Walkthrough",
+        videoHeadline: "35-Second Shunting-Yard & Keyboard Navigation Demo",
         problem: "Basic web calculators calculate results sequentially without observing mathematical operator precedence (BODMAS/PEMDAS), leading to incorrect evaluations for multi-operator expressions.",
         goals: "Construct a clean, responsive browser calculator with real-time expression parsing, full keyboard navigation, and edge-case handling.",
         architecture: "Vanilla JavaScript using an expression tokenization and stack parsing approach. DOM state handlers trigger smooth UI updates on keystroke or click.",
@@ -120,6 +126,9 @@ const caseStudyData = {
     'portfolio': {
         title: "Full Stack Personal Portfolio",
         subtitle: "Glassmorphic website with AI Assistant & Node.js backend",
+        videoTitle: "Portfolio Architecture & Gemini AI Demo",
+        videoBadge: "⏱️ 60-Sec Walkthrough",
+        videoHeadline: "60-Second AI Chatbot, Command Palette & CLI Walkthrough",
         problem: "Standard template portfolios often feel generic and lack interactive proof of technical competence, AI integration, or server-side communication.",
         goals: "Build a modern, lightning-fast portfolio featuring glassmorphic design, Gemini AI chat assistant, command palette (Ctrl+K), retro CLI terminal, and Node.js contact backend.",
         architecture: "Client built with HTML5, CSS3 aurora mesh, and Tailwind CSS; Node.js Express server acting as API proxy for Gemini AI and email delivery.",
@@ -148,6 +157,9 @@ const caseStudyData = {
     'tfa': {
         title: "Tuhfa Football Association Dashboard",
         subtitle: "Real-time league standings, fixtures, and player analytics platform",
+        videoTitle: "Sports League Table & Filter Demo",
+        videoBadge: "⏱️ 40-Sec Walkthrough",
+        videoHeadline: "40-Second Auto-Sorting Standings & Player Search Walkthrough",
         problem: "Local sports associations struggle with outdated static schedules and delayed match results for players and fans.",
         goals: "Develop a mobile-first sports tournament dashboard displaying live league tables, match results, top goal scorers, and player statistics.",
         architecture: "Single Page Application using dynamic JavaScript rendering arrays into clean, sorted HTML table structures.",
@@ -188,6 +200,15 @@ openModalBtns.forEach(btn => {
             document.getElementById('modalTitle').textContent = data.title;
             const subtitleEl = document.getElementById('modalSubtitle');
             if (subtitleEl) subtitleEl.textContent = data.subtitle;
+
+            const vTitleEl = document.getElementById('modalVideoTitle');
+            if (vTitleEl) vTitleEl.textContent = data.videoTitle || "Project Video Walkthrough";
+
+            const vBadgeEl = document.getElementById('modalVideoBadge');
+            if (vBadgeEl) vBadgeEl.textContent = data.videoBadge || "⏱️ 45-Sec Demo";
+
+            const vHeadlineEl = document.getElementById('modalVideoHeadline');
+            if (vHeadlineEl) vHeadlineEl.textContent = data.videoHeadline || "30–60 Second Feature & Architecture Walkthrough";
 
             document.getElementById('modalProblem').textContent = data.problem;
             document.getElementById('modalGoals').textContent = data.goals;
