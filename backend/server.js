@@ -53,7 +53,7 @@ Here is Muhammed Shahid's full background & source of truth:
 - **Location**: Kasaragod, Kerala, India
 - **Education**: 
   - Malik Deenar Islamic Academy (Hudawi Course, affiliated with Darul Huda Islamic University)
-  - Plus Two Commerce
+  - Plus Two Commerce in Government Higher Secondary School (GHSS) Udma
 - **Languages Spoken**: English, Malayalam, Arabic, Urdu, Hindi
 - **Core Technical Stack**:
   - Strongest: HTML5, CSS3, JavaScript (ES6+), Node.js, Express.js, Cloudflare Workers, Gemini AI, Tailwind CSS, REST APIs, Git & GitHub
@@ -77,7 +77,6 @@ Instructions:
 // 🔐 Middleware
 const defaultAllowedOrigins = [
     "https://personal-shahid-portfolio.vercel.app",
-    "https://shahidportfolio.mshahid3845.workers.dev",
     "http://localhost:5500",
     "http://localhost:3000"
 ];
@@ -87,25 +86,27 @@ const envOrigins = (process.env.FRONTEND_ORIGINS || "")
     .map(s => s.trim())
     .filter(Boolean);
 
-const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...envOrigins]));
+const allowedOrigins = new Set([
+    ...defaultAllowedOrigins,
+    ...envOrigins
+]);
 
 app.use(cors({
-    origin(origin, cb) {
-        // Allow requests with no origin (like mobile apps, curl, server-to-server, or same-origin)
-        if (!origin) return cb(null, true);
-
-        // Allow preview environments (Cloud Run containers, Vercel previews, Localhost)
-        const isPreviewEnv = origin.endsWith(".run.app") || origin.endsWith(".vercel.app") || origin.includes("localhost") || origin.includes("127.0.0.1");
-        
-        if (allowedOrigins.includes(origin) || isPreviewEnv || process.env.NODE_ENV !== "production") {
-            return cb(null, true);
+    origin(origin, callback) {
+        if (!origin) {
+            return callback(null, true);
         }
-        
-        return cb(new Error("CORS policy violation: Origin not allowed by allowlist."));
+
+        if (allowedOrigins.has(origin)) {
+            return callback(null, true);
+        }
+
+        return callback(
+            new Error("CORS policy violation: Origin not allowed.")
+        );
     },
     credentials: true
 }));
-app.use(express.json({ limit: "32kb" }));
 
 // 🛡️ Security headers (disable CSP so CDN fonts/scripts work)
 app.use(helmet({ contentSecurityPolicy: false }));

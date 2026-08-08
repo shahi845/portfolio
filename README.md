@@ -2,7 +2,7 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green?style=flat-square&logo=node.js)
 ![Express](https://img.shields.io/badge/Express-4.x-blue?style=flat-square&logo=express)
-![Gemini AI](https://img.shields.io/badge/Gemini%20AI-2.5%20Flash-purple?style=flat-square&logo=google)
+![Gemini AI](https://img.shields.io/badge/Gemini%20AI-3.6%20Flash-purple?style=flat-square&logo=google)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss)
 ![License](https://img.shields.io/badge/License-MIT-emerald?style=flat-square)
 
@@ -64,7 +64,7 @@ All third-party credentials (including `GEMINI_API_KEY`) are kept strictly serve
 │                                      │                                 │
 │                                      ▼                                 │
 │                   ┌──────────────────────────────────────┐             │
-│                   │ Gemini 2.5 Flash SDK                 │             │
+│                   │ Gemini 3.6 Flash SDK                 │             │
 │                   │ (System Instructions & Guardrails)   │             │
 │                   └──────────────────────────────────────┘             │
 └───────────────────────────────────┬────────────────────────────────────┘
@@ -88,7 +88,7 @@ All third-party credentials (including `GEMINI_API_KEY`) are kept strictly serve
 - **Runtime**: Node.js (v18+)
 - **Server Framework**: Express.js
 - **Security & Middleware**: `helmet`, `cors`, `express-rate-limit`, `xss`, `nodemailer`, `node-fetch`
-- **AI SDK**: `@google/genai` (`Gemini 2.5 Flash`)
+- **AI SDK**: `@google/genai` (`Gemini 3.6 Flash`)
 
 ### Hosting & DevOps
 - **Hosting**: Vercel & Cloudflare Workers
