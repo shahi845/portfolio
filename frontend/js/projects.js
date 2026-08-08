@@ -86,7 +86,7 @@ const caseStudyData = {
         lessons: "Mastered exact fraction math in JS, pipeline architecture patterns, and domain-driven algorithmic design.",
         stack: ['JavaScript (ES6)', 'Cloudflare Workers', 'Vercel', 'Exact Fractions', 'PDF-Lib', 'Tailwind CSS'],
         live: 'https://fara-id.vercel.app',
-        code: 'https://github.com/shahi845/inheritance-calculator'
+        code: 'https://github.com/shahi845/inheritance'
     },
     'calculator': {
         title: "Interactive Precision Web Calculator",
@@ -140,7 +140,7 @@ const caseStudyData = {
     [ Node.js / Express Server ]
               │ (Server-Side Key Protection)
               ▼
-    [ Gemini 2.5 Flash SDK ] ──► Streamed AI Context Response`,
+    [ Gemini 3.6 Flash SDK ] ──► Server-Side Gemini Context Response`,
         metrics: [
             { label: "Lighthouse Performance", value: "98/100" },
             { label: "Security", value: "100% Server-Side API Key Proxying" },
@@ -152,7 +152,7 @@ const caseStudyData = {
         lessons: "Enhanced full-stack Node.js development, REST API design, rate-limiting, and AI prompt engineering.",
         stack: ['Node.js', 'Express', 'Gemini AI API', 'Tailwind CSS', 'JavaScript', 'Cloudflare'],
         live: 'https://personal-shahid-portfolio.vercel.app/',
-        code: 'https://github.com/shahi845/personal-portfolio'
+        code: 'https://github.com/shahi845/portfolio'
     },
     'tfa': {
         title: "Tuhfa Football Association Dashboard",

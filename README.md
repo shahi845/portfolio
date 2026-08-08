@@ -136,8 +136,8 @@ All third-party credentials (including `GEMINI_API_KEY`) are kept strictly serve
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/shahi845/personal-portfolio.git
-   cd personal-portfolio
+   git clone https://github.com/shahi845/portfolio.git
+   cd portfolio
    ```
 
 2. **Install dependencies**:

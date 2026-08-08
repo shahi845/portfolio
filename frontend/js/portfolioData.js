@@ -9,6 +9,7 @@ export const PORTFOLIO_DATA = {
     email: "mshahid3845@gmail.com",
     portfolioUrl: "https://personal-shahid-portfolio.vercel.app/",
     githubUrl: "https://github.com/shahi845",
+    portfolioRepoUrl: "https://github.com/shahi845/portfolio",
     linkedinUrl: "https://www.linkedin.com/in/muhammed-shahid-388434392/",
     instagramUrl: "https://www.instagram.com/_shahid_4",
     education: [
@@ -51,7 +52,7 @@ export const PORTFOLIO_DATA = {
             name: "Full Stack Personal Portfolio",
             description: "Glassmorphic website with Gemini AI assistant, command palette (Ctrl+K), CLI terminal, and Express backend.",
             live: "https://personal-shahid-portfolio.vercel.app/",
-            github: "https://github.com/shahi845/personal-portfolio"
+            github: "https://github.com/shahi845/portfolio"
         },
         {
             name: "Tuhfa Football Association (TFA) Dashboard",

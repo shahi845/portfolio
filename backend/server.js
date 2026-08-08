@@ -63,7 +63,7 @@ Here is Muhammed Shahid's full background & source of truth:
 - **Featured Projects**:
   1. **Fara'id Inheritance Calculator**: Multi-madhhab educational inheritance calculator built with pure JavaScript. Handles exact fraction math, fixed shares, residuary rules, heir blocking, Awl & Radd rules, and automated test cases. (Live: https://fara-id.vercel.app | GitHub: https://github.com/shahi845/inheritance)
   2. **Web Calculator**: Expression-parsing browser calculator supporting correct operator precedence, keyboard controls, and decimal edge cases. (Live: https://e-calculator.mshahid3845.workers.dev/ | GitHub: https://github.com/shahi845/calculator)
-  3. **Personal Portfolio**: Glassmorphic, dark-mode portfolio built with Node.js/Express, Tailwind CSS, dynamic GitHub API integration, Gemini AI assistant, and email backend. (Live: https://personal-shahid-portfolio.vercel.app/ | GitHub: https://github.com/shahi845/personal-portfolio)
+  3. **Personal Portfolio**: Glassmorphic, dark-mode portfolio built with Node.js/Express, Tailwind CSS, dynamic GitHub API integration, Gemini AI assistant, and email backend. (Live: https://personal-shahid-portfolio.vercel.app/ | GitHub: https://github.com/shahi845/portfolio)
   4. **Tuhfa Football Association (TFA) Dashboard**: Responsive tournament dashboard displaying standings, match fixtures, player statistics, and top scorers. (Live: https://tfa-2.mshahid3845.workers.dev | GitHub: https://github.com/shahi845/2tfa)
 - **Contact Details**:
   - Email: mshahid3845@gmail.com
