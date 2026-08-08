@@ -147,7 +147,7 @@ Tools:     Git, GitHub, VS Code, Linux`,
 
         'projects': `1. Fara'id Inheritance Calculator (Live: https://fara-id.vercel.app)
 2. Interactive Web Calculator (Live: https://e-calculator.mshahid3845.workers.dev)
-3. Personal Portfolio (Live: https://shahidportfolio.mshahid3845.workers.dev)
+3. Personal Portfolio (Live: https://personal-shahid-portfolio.vercel.app)
 4. Tuhfa Football Association Dashboard (Live: https://tfa-2.mshahid3845.workers.dev)`,
 
         'philosophy': `1. Deterministic Math & Exact Fractions (0% Float Error)

@@ -87,10 +87,10 @@ dropdownLinks.forEach(link => {
 
 // --- Typewriter Effect ---
 const titles = [
-    "Full Stack Web Developer",
-    "Cloudflare & Vercel Applications",
-    "AI Integration Specialist",
-    "Islamic Mathematics Algorithmist"
+    "Full Stack Developer",
+    "Building AI-Powered Applications",
+    "Cloudflare & Vercel Specialist",
+    "Islamic Inheritance Algorithm Developer"
 ];
 const typewriterElement = document.getElementById('typewriter');
 let titleIdx = 0;

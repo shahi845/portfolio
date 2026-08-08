@@ -363,7 +363,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div>
                             <h3 class="font-extrabold text-base text-slate-900 dark:text-white flex items-center gap-1.5 leading-tight">
                                 Shahid AI
-                                <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-400 font-mono font-semibold border border-brand-500/30">Gemini</span>
                             </h3>
                             <p class="text-[11px] text-slate-400 flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online & Ready to help

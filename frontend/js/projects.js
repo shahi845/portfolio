@@ -151,7 +151,7 @@ const caseStudyData = {
         solution: "Created an interactive web portfolio with live GitHub API stats, command search palette, AI chat assistant, and responsive layout.",
         lessons: "Enhanced full-stack Node.js development, REST API design, rate-limiting, and AI prompt engineering.",
         stack: ['Node.js', 'Express', 'Gemini AI API', 'Tailwind CSS', 'JavaScript', 'Cloudflare'],
-        live: 'https://shahidportfolio.mshahid3845.workers.dev/',
+        live: 'https://personal-shahid-portfolio.vercel.app/',
         code: 'https://github.com/shahi845/personal-portfolio'
     },
     'tfa': {
