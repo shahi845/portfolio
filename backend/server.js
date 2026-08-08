@@ -18,6 +18,8 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+app.use(express.json());
+
 // 🛡️ Enable trust proxy for Cloud Run / reverse proxies so express-rate-limit correctly reads X-Forwarded-For
 app.set('trust proxy', 1);
 
