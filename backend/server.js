@@ -18,6 +18,9 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// 🛡️ Enable trust proxy for Cloud Run / reverse proxies so express-rate-limit correctly reads X-Forwarded-For
+app.set('trust proxy', 1);
+
 // 🤖 Gemini AI Client initialization (lazy)
 let aiClient = null;
 function getAIClient() {
