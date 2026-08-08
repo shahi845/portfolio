@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const typingEl = appendTypingIndicator();
 
         try {
-            const res = await fetch("/api/chat", {
+            const res = await fetch("https://shahid-portfolio-api.onrender.com/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
