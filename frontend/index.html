@@ -420,7 +420,7 @@
                     <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800">
                         <div class="text-[10px] font-bold text-purple-400 uppercase tracking-wider mb-1 flex items-center gap-1.5"><i class="fas fa-robot"></i> Building</div>
                         <div class="font-bold text-slate-200 mb-1">AI Agent Function Calling</div>
-                        <p class="text-slate-400 text-[11px] leading-relaxed">Server-side Gemini 2.5 Flash agent tools with weather lookups, GitHub stats, and context grounding.</p>
+                        <p class="text-slate-400 text-[11px] leading-relaxed">Server-side Gemini API agent tools with function calling, external API integrations, and context grounding.</p>
                     </div>
 
                     <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800">
@@ -457,23 +457,23 @@
 
                 <!-- Bar 1: Frontend -->
                 <div>
-                    <div class="flex justify-between text-sm font-bold mb-2">
+                    <div class="flex justify-between items-center text-sm font-bold mb-2">
                         <span class="text-slate-200 flex items-center gap-2"><i class="fab fa-html5 text-amber-500"></i> Frontend Development</span>
-                        <span class="text-brand-400 font-mono">95%</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Advanced</span>
                     </div>
-                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5">
-                        <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full transition-all duration-1000" style="width: 95%;"></div>
+                    <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                        <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full transition-all duration-1000" style="width: 90%;"></div>
                     </div>
                     <p class="text-[11px] text-slate-400 mt-1.5">HTML5, CSS3, JavaScript (ES6+), Tailwind CSS, Responsive Web Design, DOM Manipulation</p>
                 </div>
 
                 <!-- Bar 2: Backend -->
                 <div>
-                    <div class="flex justify-between text-sm font-bold mb-2">
+                    <div class="flex justify-between items-center text-sm font-bold mb-2">
                         <span class="text-slate-200 flex items-center gap-2"><i class="fab fa-node-js text-emerald-500"></i> Backend &amp; REST APIs</span>
-                        <span class="text-accent-400 font-mono">85%</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">Advanced</span>
                     </div>
-                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                    <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
                         <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000" style="width: 85%;"></div>
                     </div>
                     <p class="text-[11px] text-slate-400 mt-1.5">Node.js, Express.js, RESTful Routing, Middleware, Input Sanitization (XSS), Rate Limiting</p>
@@ -481,89 +481,99 @@
 
                 <!-- Bar 3: Cloud -->
                 <div>
-                    <div class="flex justify-between text-sm font-bold mb-2">
+                    <div class="flex justify-between items-center text-sm font-bold mb-2">
                         <span class="text-slate-200 flex items-center gap-2"><i class="fas fa-cloud text-cyan-400"></i> Cloud &amp; Deployment</span>
-                        <span class="text-cyan-400 font-mono">80%</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">Intermediate</span>
                     </div>
-                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5">
-                        <div class="h-full bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full transition-all duration-1000" style="width: 80%;"></div>
+                    <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                        <div class="h-full bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full transition-all duration-1000" style="width: 75%;"></div>
                     </div>
                     <p class="text-[11px] text-slate-400 mt-1.5">Cloudflare Workers, Vercel, Git &amp; GitHub Version Control, Edge Handlers</p>
                 </div>
 
                 <!-- Bar 4: AI -->
                 <div>
-                    <div class="flex justify-between text-sm font-bold mb-2">
+                    <div class="flex justify-between items-center text-sm font-bold mb-2">
                         <span class="text-slate-200 flex items-center gap-2"><i class="fas fa-robot text-purple-400"></i> AI API Integration</span>
-                        <span class="text-purple-400 font-mono">90%</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">Intermediate–Advanced</span>
                     </div>
-                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5">
-                        <div class="h-full bg-gradient-to-r from-purple-500 to-rose-400 rounded-full transition-all duration-1000" style="width: 90%;"></div>
+                    <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                        <div class="h-full bg-gradient-to-r from-purple-500 to-rose-400 rounded-full transition-all duration-1000" style="width: 80%;"></div>
                     </div>
                     <p class="text-[11px] text-slate-400 mt-1.5">Google Gemini API (@google/genai SDK), System Prompts, Context History, Fallback Handlers</p>
                 </div>
             </div>
 
             <!-- Right: Interactive Skill Badges Grid -->
-            <div class="glass glass-card p-8 rounded-3xl border border-slate-200/40 dark:border-slate-800" data-aos="fade-left">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                    <i class="fas fa-microchip text-accent-400"></i> Interactive Tech Stack
-                </h3>
+            <div class="glass glass-card p-8 rounded-3xl border border-slate-200/40 dark:border-slate-800 space-y-6" data-aos="fade-left">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Production Stack
+                        </h3>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Deployed Apps</span>
+                    </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="JavaScript">
-                        <i class="fab fa-js text-amber-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">JavaScript</div>
-                        <div class="text-[10px] text-slate-500">ES6+, Fractions, Async</div>
-                    </button>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="JavaScript">
+                            <i class="fab fa-js text-amber-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">JavaScript</div>
+                            <div class="text-[10px] text-slate-500">ES6+, Fractions, Async</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="React">
-                        <i class="fab fa-react text-cyan-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">React &amp; Next.js</div>
-                        <div class="text-[10px] text-slate-500">Component UI, Hooks</div>
-                    </button>
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Node.js">
+                            <i class="fab fa-node-js text-emerald-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">Node.js &amp; Express</div>
+                            <div class="text-[10px] text-slate-500">APIs, Server Routes</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Tailwind">
-                        <i class="fab fa-css3-alt text-blue-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">Tailwind CSS</div>
-                        <div class="text-[10px] text-slate-500">Glassmorphism, Responsive</div>
-                    </button>
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Tailwind">
+                            <i class="fab fa-css3-alt text-blue-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">Tailwind CSS</div>
+                            <div class="text-[10px] text-slate-500">Glassmorphism, Responsive</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Node.js">
-                        <i class="fab fa-node-js text-emerald-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">Node.js &amp; Express</div>
-                        <div class="text-[10px] text-slate-500">APIs, Server Routes</div>
-                    </button>
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Cloudflare">
+                            <i class="fas fa-cloud text-amber-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">Cloudflare Workers</div>
+                            <div class="text-[10px] text-slate-500">Edge Serverless</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="Cloudflare">
-                        <i class="fas fa-cloud text-amber-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">Cloudflare Workers</div>
-                        <div class="text-[10px] text-slate-500">Edge Serverless</div>
-                    </button>
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="AI">
+                            <i class="fas fa-brain text-purple-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">Gemini AI API</div>
+                            <div class="text-[10px] text-slate-500">LLM Prompting &amp; SDK</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="AI">
-                        <i class="fas fa-brain text-purple-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">Gemini AI API</div>
-                        <div class="text-[10px] text-slate-500">LLM Prompting &amp; SDK</div>
-                    </button>
+                        <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="PDF">
+                            <i class="fas fa-file-pdf text-rose-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">PDF-Lib</div>
+                            <div class="text-[10px] text-slate-500">Report Generation</div>
+                        </button>
+                    </div>
+                </div>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="HTML">
-                        <i class="fab fa-html5 text-orange-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">HTML5 Semantic</div>
-                        <div class="text-[10px] text-slate-500">WCAG Accessibility</div>
-                    </button>
+                <div class="border-t border-slate-800/80 pt-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+                            <i class="fas fa-graduation-cap text-cyan-400"></i> Currently Learning &amp; Expanding
+                        </h3>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Active Roadmap</span>
+                    </div>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="GitHub">
-                        <i class="fab fa-github text-slate-300 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">Git &amp; GitHub</div>
-                        <div class="text-[10px] text-slate-500">Version Control</div>
-                    </button>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button type="button" class="interactive-tech-tag p-3 glass rounded-2xl border border-slate-800/80 hover:border-cyan-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="React">
+                            <i class="fab fa-react text-cyan-400 text-lg mb-1 block group-hover:scale-110 transition transform"></i>
+                            <div class="font-bold text-xs text-slate-200">React &amp; Next.js</div>
+                            <div class="text-[10px] text-slate-400">Component UI, App Router</div>
+                        </button>
 
-                    <button type="button" class="interactive-tech-tag p-3.5 glass rounded-2xl border border-slate-800 hover:border-brand-500 text-left transition transform hover:-translate-y-1 group cursor-pointer" data-tech="PDF">
-                        <i class="fas fa-file-pdf text-rose-400 text-xl mb-1.5 block group-hover:scale-110 transition transform"></i>
-                        <div class="font-bold text-xs text-slate-200">PDF-Lib</div>
-                        <div class="text-[10px] text-slate-500">Report Generation</div>
-                    </button>
+                        <div class="p-3 glass rounded-2xl border border-slate-800/80 text-left">
+                            <i class="fas fa-database text-purple-400 text-lg mb-1 block"></i>
+                            <div class="font-bold text-xs text-slate-200">Cloud SQL &amp; Drizzle</div>
+                            <div class="text-[10px] text-slate-400">Relational Schemas &amp; ORM</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1160,7 +1170,7 @@
             <div class="p-8 overflow-y-auto space-y-6 text-slate-200 hide-scrollbar">
                 <div class="border-b border-slate-800 pb-6">
                     <h1 class="text-3xl font-extrabold text-white mb-1">Muhammed Shahid</h1>
-                    <p class="text-brand-400 font-mono text-sm mb-3">Full Stack Web Developer &amp; Student</p>
+                    <p class="text-brand-400 font-mono text-sm mb-3">Full Stack Developer | AI-Powered Applications</p>
                     <p class="text-xs text-slate-400">Email: mshahid3845@gmail.com | GitHub: github.com/shahi845 | Kasaragod, Kerala, India</p>
                 </div>
 
@@ -1217,8 +1227,8 @@
                 <div class="flex items-center gap-3 mb-2">
                     <span class="px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 font-bold text-xs rounded-full uppercase tracking-wider">Project Case Study</span>
                 </div>
-                <h2 id="modalTitle" class="text-2xl md:text-4xl font-extrabold mb-1 text-white">Project Title</h2>
-                <p id="modalSubtitle" class="text-xs font-mono text-slate-400 mb-6">Subtitle</p>
+                <h2 id="modalTitle" class="text-2xl md:text-4xl font-extrabold mb-1 text-white">Interactive Case Study</h2>
+                <p id="modalSubtitle" class="text-xs font-mono text-slate-400 mb-6">Select a project from the portfolio section to inspect architectural case study details.</p>
 
                 <!-- Project Video Walkthrough Placeholder Frame -->
                 <div id="modalVideoFrame" class="mb-8 rounded-2xl bg-slate-950/90 border border-slate-800/80 p-4 relative overflow-hidden shadow-2xl transition-all duration-300">
@@ -1258,15 +1268,15 @@
                     <div class="md:col-span-2 space-y-6">
                         <div>
                             <h3 class="text-base font-bold text-brand-400 mb-1 flex items-center"><i class="fas fa-crosshairs mr-2"></i> Problem Statement</h3>
-                            <p id="modalProblem" class="text-slate-300 leading-relaxed text-xs md:text-sm">...</p>
+                            <p id="modalProblem" class="text-slate-300 leading-relaxed text-xs md:text-sm">Select any project above to view its detailed problem analysis and domain context.</p>
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-purple-400 mb-1 flex items-center"><i class="fas fa-bullseye mr-2"></i> Goals</h3>
-                            <p id="modalGoals" class="text-slate-300 leading-relaxed text-xs md:text-sm">...</p>
+                            <p id="modalGoals" class="text-slate-300 leading-relaxed text-xs md:text-sm">Select a project to view targeted engineering goals and design parameters.</p>
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-accent-400 mb-1 flex items-center"><i class="fas fa-drafting-compass mr-2"></i> Architecture &amp; Decisions</h3>
-                            <p id="modalArchitecture" class="text-slate-300 leading-relaxed text-xs md:text-sm mb-3">...</p>
+                            <p id="modalArchitecture" class="text-slate-300 leading-relaxed text-xs md:text-sm mb-3">Select a project to view system architecture breakdowns and decision logs.</p>
                             <!-- Visual Architecture Flow Diagram -->
                             <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 font-mono text-[11px] text-cyan-300 overflow-x-auto my-3 leading-relaxed shadow-inner">
                                 <div class="text-[10px] uppercase font-bold text-slate-500 mb-1 flex items-center gap-1.5"><i class="fas fa-sitemap text-cyan-400"></i> System Architecture Flow</div>
@@ -1275,15 +1285,15 @@
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-amber-400 mb-1 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i> Challenges Faced</h3>
-                            <p id="modalChallenges" class="text-slate-300 leading-relaxed text-xs md:text-sm">...</p>
+                            <p id="modalChallenges" class="text-slate-300 leading-relaxed text-xs md:text-sm">Select a project to view technical edge cases and complexity trade-offs.</p>
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-blue-400 mb-1 flex items-center"><i class="fas fa-check-circle mr-2"></i> Solution</h3>
-                            <p id="modalSolution" class="text-slate-300 leading-relaxed text-xs md:text-sm">...</p>
+                            <p id="modalSolution" class="text-slate-300 leading-relaxed text-xs md:text-sm">Select a project to view implemented algorithms and architectural solutions.</p>
                         </div>
                         <div>
                             <h3 class="text-base font-bold text-emerald-400 mb-1 flex items-center"><i class="fas fa-lightbulb mr-2"></i> Key Lessons Learned</h3>
-                            <p id="modalLessons" class="text-slate-300 leading-relaxed text-xs md:text-sm">...</p>
+                            <p id="modalLessons" class="text-slate-300 leading-relaxed text-xs md:text-sm">Select a project to view engineering takeaways and key learnings.</p>
                         </div>
                     </div>
                     
