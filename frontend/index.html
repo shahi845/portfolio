@@ -714,28 +714,30 @@
                 <form id="contactForm" class="glass-card p-8 border border-white/[0.08] space-y-5">
                     <h3 class="font-heading font-semibold text-xl text-white mb-2">Send Message</h3>
 
+                    <div id="formStatus" class="hidden rounded-xl p-4 text-sm font-medium"></div>
+
                     <div class="grid sm:grid-cols-2 gap-4">
                         <div>
                             <label for="contactName" class="block text-xs font-mono text-[#A7B0C0] mb-1.5">Your Name</label>
-                            <input type="text" id="contactName" required placeholder="Alice Smith" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
+                            <input type="text" id="contactName" name="name" required placeholder="Alice Smith" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
                         </div>
                         <div>
                             <label for="contactEmail" class="block text-xs font-mono text-[#A7B0C0] mb-1.5">Your Email</label>
-                            <input type="email" id="contactEmail" required placeholder="alice@example.com" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
+                            <input type="email" id="contactEmail" name="email" required placeholder="alice@example.com" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
                         </div>
                     </div>
 
                     <div>
                         <label for="contactSubject" class="block text-xs font-mono text-[#A7B0C0] mb-1.5">Subject</label>
-                        <input type="text" id="contactSubject" required placeholder="Project Inquiry / Opportunity" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
+                        <input type="text" id="contactSubject" name="subject" required placeholder="Project Inquiry / Opportunity" class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition">
                     </div>
 
                     <div>
                         <label for="contactMessage" class="block text-xs font-mono text-[#A7B0C0] mb-1.5">Message</label>
-                        <textarea id="contactMessage" rows="4" required placeholder="Describe your project goals or inquiry..." class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition"></textarea>
+                        <textarea id="contactMessage" name="message" rows="4" required placeholder="Describe your project goals or inquiry..." class="w-full px-4 py-2.5 rounded-xl bg-[#090D18] border border-white/[0.08] text-white text-sm focus:border-blue-500 focus:outline-none transition"></textarea>
                     </div>
 
-                    <button type="submit" id="contactSubmitBtn" class="btn-primary w-full justify-center inline-flex items-center gap-2 text-sm">
+                    <button type="submit" id="submitBtn" class="btn-primary w-full justify-center inline-flex items-center gap-2 text-sm">
                         <span>Send Message</span> <i class="fas fa-paper-plane text-xs"></i>
                     </button>
                 </form>

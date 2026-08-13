@@ -77,36 +77,8 @@ Instructions:
 - Use markdown formatting like **bold text** or bullet points for readability.`;
 
 // 🔐 Middleware
-const defaultAllowedOrigins = [
-    "https://personal-shahid-portfolio.vercel.app",
-    "http://localhost:5500",
-    "http://localhost:3000"
-];
-
-const envOrigins = (process.env.FRONTEND_ORIGINS || "")
-    .split(",")
-    .map(s => s.trim())
-    .filter(Boolean);
-
-const allowedOrigins = new Set([
-    ...defaultAllowedOrigins,
-    ...envOrigins
-]);
-
 app.use(cors({
-    origin(origin, callback) {
-        if (!origin) {
-            return callback(null, true);
-        }
-
-        if (allowedOrigins.has(origin)) {
-            return callback(null, true);
-        }
-
-        return callback(
-            new Error("CORS policy violation: Origin not allowed.")
-        );
-    },
+    origin: true,
     credentials: true
 }));
 

@@ -162,14 +162,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const typingEl = appendTypingIndicator();
 
         try {
-            const res = await fetch("https://shahid-portfolio-api.onrender.com/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    message: text,
-                    history: messageHistory.slice(-6)
-                })
-            });
+            let res;
+            try {
+                res = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        message: text,
+                        history: messageHistory.slice(-6)
+                    })
+                });
+            } catch (localErr) {
+                res = await fetch("https://shahid-portfolio-api.onrender.com/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        message: text,
+                        history: messageHistory.slice(-6)
+                    })
+                });
+            }
 
             const data = await res.json();
             typingEl.remove();
@@ -237,7 +249,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // If welcome message, append suggestion chips inside bot container
         if (isInitial && suggestionsBox) {
-            wrapper.querySelector('.max-w-\\[85\\%\\]').appendChild(suggestionsBox);
+            const container = wrapper.querySelector('.max-w-\\[85\\%\\]') || wrapper.children[1];
+            if (container) container.appendChild(suggestionsBox);
         }
 
         messagesContainer.appendChild(wrapper);
