@@ -1,52 +1,114 @@
 // --- Project & Stack Filtering ---
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const visibleCountEl = document.getElementById('visibleProjectCount');
+    const noProjectsEl = document.getElementById('noProjectsMessage');
+    const projectsGrid = document.getElementById('projectsGrid');
 
-function filterProjects(filterValue) {
-    // Update active filter button state
-    filterBtns.forEach(b => {
-        const val = b.getAttribute('data-filter');
-        if (val === filterValue) {
-            b.classList.add('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_12px_rgba(59,130,246,0.3)]');
-            b.classList.remove('text-slate-500');
-        } else {
-            b.classList.remove('active', 'text-brand-500', 'border-brand-500', 'shadow-[0_0_12px_rgba(59,130,246,0.3)]');
-            b.classList.add('text-slate-500');
+    window.filterProjects = function(filterValue) {
+        if (!filterValue) filterValue = 'all';
+        const normFilter = filterValue.toLowerCase().trim();
+
+        // Update button visual states
+        filterBtns.forEach(btn => {
+            const btnVal = (btn.getAttribute('data-filter') || '').toLowerCase().trim();
+            if (btnVal === normFilter) {
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+            } else {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            }
+        });
+
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+            const category = (card.getAttribute('data-category') || '').toLowerCase();
+            const classList = Array.from(card.classList).join(' ').toLowerCase();
+
+            const isMatch = (
+                normFilter === 'all' ||
+                category.includes(normFilter) ||
+                classList.includes(normFilter) ||
+                tags.includes(normFilter)
+            );
+
+            if (isMatch) {
+                card.classList.remove('filter-hidden');
+                card.classList.add('filter-fade-in');
+                visibleCount++;
+            } else {
+                card.classList.remove('filter-fade-in');
+                card.classList.add('filter-hidden');
+            }
+        });
+
+        // Update results counter
+        if (visibleCountEl) {
+            visibleCountEl.textContent = visibleCount;
         }
-    });
 
-    // Show/hide cards matching category OR technology tag
-    projectCards.forEach(card => {
-        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
-        if (filterValue === 'all' || card.classList.contains(filterValue) || tags.includes(filterValue.toLowerCase())) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const filterValue = btn.getAttribute('data-filter');
-        filterProjects(filterValue);
-    });
-});
-
-// Allow tech badge clicks across the page to filter projects
-document.addEventListener('click', (e) => {
-    const techTag = e.target.closest('.interactive-tech-tag');
-    if (techTag) {
-        const tech = techTag.getAttribute('data-tech');
-        if (tech) {
-            filterProjects(tech);
-            const projectsSection = document.getElementById('projects');
-            if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth' });
+        // Toggle empty-state message
+        if (noProjectsEl) {
+            if (visibleCount === 0) {
+                noProjectsEl.classList.remove('hidden');
+                noProjectsEl.classList.add('block');
+            } else {
+                noProjectsEl.classList.add('hidden');
+                noProjectsEl.classList.remove('block');
             }
         }
+    };
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterValue = btn.getAttribute('data-filter');
+            window.filterProjects(filterValue);
+        });
+    });
+
+    // Make tech-chips clickable to filter by that technology
+    document.addEventListener('click', (e) => {
+        const chip = e.target.closest('.tech-chip, .interactive-tech-tag');
+        if (chip && !chip.closest('#navbar') && !chip.closest('dialog')) {
+            const rawText = chip.textContent.trim().toLowerCase().replace(/[^a-z0-9.-]/g, '');
+            if (rawText) {
+                let targetFilter = rawText;
+                if (targetFilter.includes('node') || targetFilter.includes('express') || targetFilter.includes('react') || targetFilter.includes('auth')) {
+                    targetFilter = 'fullstack';
+                } else if (targetFilter.includes('ai') || targetFilter.includes('gemini')) {
+                    targetFilter = 'ai';
+                } else if (targetFilter.includes('math') || targetFilter.includes('calc') || targetFilter.includes('utility')) {
+                    targetFilter = 'utility';
+                } else if (targetFilter.includes('cloud') || targetFilter.includes('worker')) {
+                    targetFilter = 'cloudflare';
+                } else if (targetFilter.includes('java') || targetFilter.includes('js')) {
+                    targetFilter = 'javascript';
+                }
+
+                window.filterProjects(targetFilter);
+                const projectsSection = document.getElementById('selected-projects') || document.getElementById('projects');
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    });
+
+    // Initial count display
+    if (visibleCountEl) {
+        visibleCountEl.textContent = projectCards.length;
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectFilters);
+} else {
+    initProjectFilters();
+}
 
 // --- Case Study Modal ---
 const caseStudyData = {
@@ -77,12 +139,12 @@ const caseStudyData = {
 [ Exact Rational Fractions ] ──► Client Display & PDF-Lib Report Generation`,
         metrics: [
             { label: "Calculation Accuracy", value: "100% (0% Float Rounding Error)" },
-            { label: "Unit Test Cases Passed", value: "30+ Jurisprudential Edge Cases" },
+            { label: "Unit Test Cases Passed", value: "300+ Jurisprudential Edge Cases" },
             { label: "Lighthouse Performance", value: "98/100" },
             { label: "Client Execution Latency", value: "< 5ms Instant Compute" }
         ],
         challenges: "Translating classical Arabic jurisprudential treatises into strict algorithmic logic, handling edge cases like Umariyyatan (Gharrawain), and rendering clean, shareable PDF reports with PDF-Lib.",
-        solution: "Built an engine with automated unit tests for over 30 test cases, custom fraction math utilities, heir input validation, and instantaneous share breakdown UI.",
+        solution: "Built an engine with automated unit tests for over 300 test cases, custom fraction math utilities, heir input validation, and instantaneous share breakdown UI.",
         lessons: "Mastered exact fraction math in JS, pipeline architecture patterns, and domain-driven algorithmic design.",
         stack: ['JavaScript (ES6)', 'Cloudflare Workers', 'Vercel', 'Exact Fractions', 'PDF-Lib', 'Tailwind CSS'],
         live: 'https://fara-id.vercel.app',

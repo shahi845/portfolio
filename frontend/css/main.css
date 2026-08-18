@@ -236,6 +236,83 @@ html:not(.dark) .btn-secondary:hover {
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
+/* Interactive Filter Buttons */
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(16, 24, 39, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94A3B8;
+    transition: all 200ms ease-out;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.filter-btn:hover {
+    background: rgba(30, 41, 59, 0.85);
+    color: #F8FAFC;
+    border-color: rgba(96, 165, 250, 0.35);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    border-color: #3B82F6 !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4) !important;
+}
+
+html:not(.dark) .filter-btn {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    color: #475569;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+html:not(.dark) .filter-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+    border-color: #94A3B8;
+}
+
+html:not(.dark) .filter-btn.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    border-color: #2563EB !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+}
+
+/* Card Filter Animation & State */
+.project-card {
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.project-card.filter-hidden {
+    display: none !important;
+}
+
+.project-card.filter-fade-in {
+    animation: filterFadeIn 250ms ease forwards;
+}
+
+@keyframes filterFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
