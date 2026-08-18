@@ -89,8 +89,8 @@ const caseStudyData = {
         code: 'https://github.com/shahi845/inheritance'
     },
     'calculator': {
-        title: "Interactive Precision Web Calculator",
-        subtitle: "Expression parsing browser calculator with operator precedence",
+        title: "E-Calculator — Smart Scientific Calculator",
+        subtitle: "Smart scientific browser calculator with expression parsing & operator precedence",
         videoTitle: "Calculator Operator Precedence Walkthrough",
         videoBadge: "⏱️ 35-Sec Walkthrough",
         videoHeadline: "35-Second Shunting-Yard & Keyboard Navigation Demo",
