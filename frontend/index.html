@@ -243,7 +243,7 @@
             <div class="grid grid-cols-3 gap-6 text-center">
                 
                 <div class="space-y-1">
-                    <div class="font-heading font-bold text-3xl sm:text-5xl text-white tracking-tight stat-number" data-target="4">4+</div>
+                    <div class="font-heading font-bold text-3xl sm:text-5xl text-white tracking-tight stat-number" data-target="5">5+</div>
                     <div class="text-xs sm:text-sm font-mono text-[#697386] uppercase tracking-wider">PROJECTS BUILT</div>
                 </div>
 
@@ -428,31 +428,72 @@
                 </div>
             </div>
 
-            <!-- Project 4: TFA Dashboard -->
-            <div class="glass-card p-6 border border-white/[0.08] flex flex-col justify-between space-y-6 project-card dashboard md:col-span-2" data-tags="javascript html cloudflare" data-aos="fade-up">
-                <div class="grid md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-6 rounded-xl overflow-hidden border border-white/[0.06] bg-[#090D18]">
+            <!-- Project 4: Task Management Application -->
+            <div class="glass-card p-6 border border-white/[0.08] flex flex-col justify-between space-y-6 project-card fullstack" data-tags="react fullstack auth node.js express vercel crud database" data-aos="fade-up">
+                <div class="space-y-4">
+                    <div class="rounded-xl overflow-hidden border border-white/[0.06] bg-[#090D18] relative group">
+                        <img src="assets/projects/task-management.svg" alt="Task Management App Preview" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block mr-1"></span> Live on Vercel
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Productivity Platform</span>
+                        <h3 class="font-heading font-semibold text-xl text-white mt-2">Task Management Application</h3>
+                        <p class="text-xs text-[#A7B0C0] leading-relaxed mt-1">
+                            Modern full-stack task management application with secure user authentication, user-specific task workflows, real-time status tracking, and RESTful API persistence.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="tech-chip">Full Stack</span>
+                        <span class="tech-chip">User Auth</span>
+                        <span class="tech-chip">CRUD APIs</span>
+                        <span class="tech-chip">Vercel</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/[0.06]">
+                        <a href="https://task-management-app-pi-vert.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-blue-400 hover:underline">
+                            Live App <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <button type="button" class="open-modal-btn btn-secondary text-xs px-3.5 py-1.5" data-project="taskmanager">
+                            Case Study →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: TFA Dashboard -->
+            <div class="glass-card p-6 border border-white/[0.08] flex flex-col justify-between space-y-6 project-card dashboard" data-tags="javascript html cloudflare sports" data-aos="fade-up" data-aos-delay="100">
+                <div class="space-y-4">
+                    <div class="rounded-xl overflow-hidden border border-white/[0.06] bg-[#090D18]">
                         <img src="assets/projects/football-dashboard.webp" alt="TFA Dashboard Preview" class="w-full h-48 object-cover hover:scale-105 transition duration-500">
                     </div>
-                    <div class="md:col-span-6 space-y-3">
+                    <div>
                         <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Sports Analytics</span>
-                        <h3 class="font-heading font-semibold text-xl text-white">Tuhfa Football Association (TFA) Dashboard</h3>
-                        <p class="text-xs text-[#A7B0C0] leading-relaxed">
+                        <h3 class="font-heading font-semibold text-xl text-white mt-2">Tuhfa Football Association (TFA) Dashboard</h3>
+                        <p class="text-xs text-[#A7B0C0] leading-relaxed mt-1">
                             Responsive sports league tournament dashboard featuring auto-sorting standings tables, fixture schedules, goal difference calculations, and player lookup.
                         </p>
-                        <div class="flex flex-wrap gap-2 text-xs font-mono pt-1">
-                            <span class="tech-chip">JavaScript</span>
-                            <span class="tech-chip">Cloudflare Workers</span>
-                            <span class="tech-chip">Data Sorting</span>
-                        </div>
-                        <div class="flex items-center gap-4 pt-2">
-                            <a href="https://tfa-2.mshahid3845.workers.dev" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs py-2 px-4">
-                                Open Dashboard <i class="fas fa-external-link-alt text-[10px]"></i>
-                            </a>
-                            <button type="button" class="open-modal-btn btn-secondary text-xs py-2 px-4" data-project="tfa">
-                                Case Study →
-                            </button>
-                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <span class="tech-chip">JavaScript</span>
+                        <span class="tech-chip">Cloudflare Workers</span>
+                        <span class="tech-chip">Data Sorting</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-white/[0.06]">
+                        <a href="https://tfa-2.mshahid3845.workers.dev" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-blue-400 hover:underline">
+                            Live App <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <button type="button" class="open-modal-btn btn-secondary text-xs px-3.5 py-1.5" data-project="tfa">
+                            Case Study →
+                        </button>
                     </div>
                 </div>
             </div>
@@ -909,6 +950,7 @@
                 <div>
                     <h3 class="font-heading font-semibold text-sm text-white mb-1">KEY PROJECTS</h3>
                     <ul class="list-disc pl-4 space-y-1 text-[#A7B0C0]">
+                        <li><strong>Task Management Application:</strong> Full-stack productivity platform with user authentication, CRUD operations, and persistent database storage.</li>
                         <li><strong>Shafi Inheritance Engine:</strong> Deterministic Islamic inheritance algorithm using rational fraction arithmetic.</li>
                         <li><strong>Interactive Web Calculator:</strong> Expression parsing browser calculator with BODMAS precedence.</li>
                         <li><strong>Full Stack AI Portfolio API:</strong> Node.js/Express API proxy for Gemini AI assistant.</li>

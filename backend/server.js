@@ -61,10 +61,11 @@ Here is Muhammed Shahid's full background & source of truth:
   - Strongest: HTML5, CSS3, JavaScript (ES6+), Node.js, Express.js, Cloudflare Workers, Gemini AI, Tailwind CSS, REST APIs, Git & GitHub
   - Currently Learning: React, Next.js, Cloud Databases (PostgreSQL / Cloud SQL), Cybersecurity
 - **Featured Projects**:
-  1. **Fara'id Inheritance Calculator**: Multi-madhhab educational inheritance calculator built with pure JavaScript. Handles exact fraction math, fixed shares, residuary rules, heir blocking, Awl & Radd rules, and automated test cases. (Live: https://fara-id.vercel.app | GitHub: https://github.com/shahi845/inheritance)
-  2. **Web Calculator**: Expression-parsing browser calculator supporting correct operator precedence, keyboard controls, and decimal edge cases. (Live: https://e-calculator.mshahid3845.workers.dev/ | GitHub: https://github.com/shahi845/calculator)
-  3. **Personal Portfolio**: Glassmorphic, dark-mode portfolio built with Node.js/Express, Tailwind CSS, dynamic GitHub API integration, Gemini AI assistant, and email backend. (Live: https://personal-shahid-portfolio.vercel.app/ | GitHub: https://github.com/shahi845/portfolio)
-  4. **Tuhfa Football Association (TFA) Dashboard**: Responsive tournament dashboard displaying standings, match fixtures, player statistics, and top scorers. (Live: https://tfa-2.mshahid3845.workers.dev | GitHub: https://github.com/shahi845/2tfa)
+  1. **Task Management Application**: A modern full-stack task management platform with secure user authentication & authorization, user-specific task management, full CRUD operations, status/progress tracking, database persistence, RESTful API integration, and production deployment on Vercel. (Live: https://task-management-app-pi-vert.vercel.app/ | GitHub: https://github.com/shahi845)
+  2. **Fara'id Inheritance Calculator**: Multi-madhhab educational inheritance calculator built with pure JavaScript. Handles exact fraction math, fixed shares, residuary rules, heir blocking, Awl & Radd rules, and automated test cases. (Live: https://fara-id.vercel.app | GitHub: https://github.com/shahi845/inheritance)
+  3. **Web Calculator**: Expression-parsing browser calculator supporting correct operator precedence, keyboard controls, and decimal edge cases. (Live: https://e-calculator.mshahid3845.workers.dev/ | GitHub: https://github.com/shahi845/calculator)
+  4. **Personal Portfolio**: Glassmorphic, dark-mode portfolio built with Node.js/Express, Tailwind CSS, dynamic GitHub API integration, Gemini AI assistant, and email backend. (Live: https://personal-shahid-portfolio.vercel.app/ | GitHub: https://github.com/shahi845/portfolio)
+  5. **Tuhfa Football Association (TFA) Dashboard**: Responsive tournament dashboard displaying standings, match fixtures, player statistics, and top scorers. (Live: https://tfa-2.mshahid3845.workers.dev | GitHub: https://github.com/shahi845/2tfa)
 - **Contact Details**:
   - Email: mshahid3845@gmail.com
   - GitHub: https://github.com/shahi845

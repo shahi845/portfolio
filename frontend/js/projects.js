@@ -185,6 +185,39 @@ const caseStudyData = {
         stack: ['JavaScript', 'HTML5', 'Tailwind CSS', 'Cloudflare Workers', 'Data Sorting'],
         live: 'https://tfa-2.mshahid3845.workers.dev',
         code: 'https://github.com/shahi845/2tfa'
+    },
+    'taskmanager': {
+        title: "Task Management Application",
+        subtitle: "Full-stack productivity platform with user authentication, CRUD operations & status tracking",
+        videoTitle: "Task Management Architecture & Workflow Demo",
+        videoBadge: "⏱️ 45-Sec Walkthrough",
+        videoHeadline: "45-Second Authentication, CRUD Operations & Status Tracking Demo",
+        problem: "Users need an intuitive, responsive, and secure task management system to organize daily workloads, track completion status, and persist tasks across devices without friction or data loss.",
+        goals: "Build a practical productivity platform with secure user authentication and authorization, user-specific task management, full CRUD operations, persistent database storage, and a responsive interface for desktop and mobile.",
+        architecture: "Modular full-stack architecture featuring a responsive client interface communicating with a RESTful API backend handling auth tokens, task schemas, status transitions, and persistent storage deployed on Vercel.",
+        diagram: `[ User Desktop / Mobile UI ]
+       │ (User Auth / REST Requests)
+       ▼
+[ Authentication & Authorization Middleware ]
+       │ ──► Verify User Session & Scopes
+       ▼
+[ Task Controller & CRUD API ]
+       ├──► Create, Read, Update, Delete Tasks
+       ├──► Filter & Track Progress Status
+       ▼
+[ Database Storage & Persistence ] ──► User-Specific Task Records`,
+        metrics: [
+            { label: "Authentication", value: "Secure User Auth & Authorization" },
+            { label: "Operations", value: "Full CRUD & Real-Time Progress Tracking" },
+            { label: "Deployment", value: "Production Vercel Cloud" },
+            { label: "Responsiveness", value: "Mobile & Desktop Optimized Layout" }
+        ],
+        challenges: "Implementing secure session handling, isolating user-specific task records, maintaining smooth UI updates on task completion, and structuring responsive task boards for smaller screens.",
+        solution: "Designed clean RESTful API endpoints for user auth and task mutations, backed by persistent data storage, fast search/status filtering, and responsive mobile-first UI.",
+        lessons: "Strengthened full-stack authentication workflows, database schema modeling, state management for interactive CRUD interfaces, and production Vercel deployment.",
+        stack: ['Full Stack', 'Authentication', 'CRUD APIs', 'RESTful API', 'Database Persistence', 'Vercel', 'JavaScript'],
+        live: 'https://task-management-app-pi-vert.vercel.app/',
+        code: 'https://github.com/shahi845'
     }
 };
 

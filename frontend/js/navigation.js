@@ -37,10 +37,10 @@ window.addEventListener('scroll', () => {
 
     // Navbar styling
     if (window.scrollY > 50) {
-        nav?.classList.add('shadow-lg', 'bg-slate-900/90', 'dark:bg-slate-950/90', 'backdrop-blur-md'); 
+        nav?.classList.add('shadow-lg', 'bg-white/90', 'dark:bg-slate-950/90', 'backdrop-blur-md'); 
         nav?.classList.remove('glass');
     } else {
-        nav?.classList.remove('shadow-lg', 'bg-slate-900/90', 'dark:bg-slate-950/90', 'backdrop-blur-md'); 
+        nav?.classList.remove('shadow-lg', 'bg-white/90', 'dark:bg-slate-950/90', 'backdrop-blur-md'); 
         nav?.classList.add('glass');
     }
 
@@ -54,12 +54,12 @@ window.addEventListener('scroll', () => {
     });
 
     navLinks.forEach(link => {
-        link.classList.remove('text-brand-400', 'font-bold');
+        link.classList.remove('text-blue-600', 'dark:text-brand-400', 'font-bold');
         if (current && link.getAttribute('href').includes(current)) {
-            link.classList.add('text-brand-400', 'font-bold');
-            link.classList.remove('text-slate-400');
+            link.classList.add('text-blue-600', 'dark:text-brand-400', 'font-bold');
+            link.classList.remove('text-slate-600', 'dark:text-slate-400');
         } else {
-            link.classList.add('text-slate-400');
+            link.classList.add('text-slate-600', 'dark:text-slate-400');
         }
     });
 }, { passive: true });

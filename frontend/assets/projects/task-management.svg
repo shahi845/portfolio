@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D18"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#060810"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Accent -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="450" fill="url(#grid)"/>
+
+  <!-- Top Ambient Glow -->
+  <circle cx="400" cy="50" r="220" fill="#3b82f6" opacity="0.08" filter="blur(60px)"/>
+
+  <!-- App Window Container -->
+  <g transform="translate(40, 30)" filter="url(#shadow)">
+    <!-- Window Frame -->
+    <rect width="720" height="390" rx="16" fill="#0B1120" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+    <!-- App Header / Navbar -->
+    <rect width="720" height="52" rx="16" fill="#0E1626"/>
+    <path d="M 0 52 L 720 52" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+    <!-- Window Dots -->
+    <circle cx="28" cy="26" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="26" r="5" fill="#f59e0b"/>
+    <circle cx="60" cy="26" r="5" fill="#10b981"/>
+
+    <!-- App Brand & Title -->
+    <text x="85" y="31" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5">TASKFLOW</text>
+    <rect x="175" y="16" width="68" height="20" rx="6" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+    <text x="183" y="30" fill="#60a5fa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">FULL STACK</text>
+
+    <!-- User Auth Status (Right) -->
+    <rect x="585" y="14" width="115" height="24" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
+    <circle cx="597" cy="26" r="4" fill="#10b981"/>
+    <text x="607" y="30" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Authenticated</text>
+
+    <!-- Subheader Stats Bar -->
+    <g transform="translate(24, 70)">
+      <rect width="672" height="42" rx="10" fill="#121D30" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      
+      <text x="20" y="26" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Total Tasks: <tspan fill="#ffffff" font-weight="700">18</tspan></text>
+      <text x="140" y="26" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">Completed: <tspan fill="#34d399" font-weight="700">12 (67%)</tspan></text>
+      <text x="290" y="26" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">In Progress: <tspan fill="#60a5fa" font-weight="700">4</tspan></text>
+      
+      <!-- New Task Action Button -->
+      <rect x="555" y="8" width="102" height="26" rx="7" fill="url(#blueGlow)"/>
+      <text x="572" y="25" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">+ Create Task</text>
+    </g>
+
+    <!-- Task Columns Grid -->
+    <!-- Column 1: In Progress -->
+    <g transform="translate(24, 126)">
+      <rect width="216" height="240" rx="12" fill="#0D1525" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <circle cx="18" cy="20" r="4" fill="#3b82f6"/>
+      <text x="30" y="24" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">IN PROGRESS (4)</text>
+
+      <!-- Task Card 1 -->
+      <g transform="translate(10, 38)">
+        <rect width="196" height="88" rx="8" fill="#131E33" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
+        <text x="12" y="22" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">REST API Integration</text>
+        <text x="12" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Connect user task mutations &amp; auth</text>
+        
+        <rect x="12" y="58" width="46" height="16" rx="4" fill="rgba(59,130,246,0.15)"/>
+        <text x="17" y="70" fill="#60a5fa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">Backend</text>
+
+        <rect x="64" y="58" width="38" height="16" rx="4" fill="rgba(239,68,68,0.15)"/>
+        <text x="69" y="70" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">High</text>
+      </g>
+
+      <!-- Task Card 2 -->
+      <g transform="translate(10, 136)">
+        <rect width="196" height="88" rx="8" fill="#131E33" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <text x="12" y="22" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Mobile Touch UX</text>
+        <text x="12" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Responsive drawer &amp; swipe gestures</text>
+        
+        <rect x="12" y="58" width="48" height="16" rx="4" fill="rgba(139,92,246,0.15)"/>
+        <text x="17" y="70" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">Frontend</text>
+      </g>
+    </g>
+
+    <!-- Column 2: Completed -->
+    <g transform="translate(252, 126)">
+      <rect width="216" height="240" rx="12" fill="#0D1525" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <circle cx="18" cy="20" r="4" fill="#10b981"/>
+      <text x="30" y="24" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">COMPLETED (12)</text>
+
+      <!-- Task Card 3 -->
+      <g transform="translate(10, 38)">
+        <rect width="196" height="88" rx="8" fill="#131E33" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+        <text x="12" y="22" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">User Authentication</text>
+        <text x="12" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">JWT authorization &amp; protected routes</text>
+        
+        <rect x="12" y="58" width="38" height="16" rx="4" fill="rgba(16,185,129,0.15)"/>
+        <text x="17" y="70" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">Auth</text>
+
+        <rect x="56" y="58" width="58" height="16" rx="4" fill="rgba(16,185,129,0.1)"/>
+        <text x="61" y="70" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">✓ Done</text>
+      </g>
+
+      <!-- Task Card 4 -->
+      <g transform="translate(10, 136)">
+        <rect width="196" height="88" rx="8" fill="#131E33" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <text x="12" y="22" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Database Schema</text>
+        <text x="12" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">User-specific task persistence store</text>
+        
+        <rect x="12" y="58" width="54" height="16" rx="4" fill="rgba(59,130,246,0.15)"/>
+        <text x="17" y="70" fill="#60a5fa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="600">Database</text>
+      </g>
+    </g>
+
+    <!-- Column 3: Summary / Overview -->
+    <g transform="translate(480, 126)">
+      <rect width="216" height="240" rx="12" fill="#0D1525" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <circle cx="18" cy="20" r="4" fill="#8b5cf6"/>
+      <text x="30" y="24" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">ARCHITECTURE</text>
+
+      <g transform="translate(10, 38)">
+        <rect width="196" height="186" rx="8" fill="#131E33" stroke="rgba(139,92,246,0.15)" stroke-width="1"/>
+        
+        <text x="12" y="24" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">DEPLOYMENT SPECS</text>
+        
+        <text x="12" y="48" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Host: <tspan fill="#ffffff" font-weight="600">Vercel Production</tspan></text>
+        <text x="12" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">API: <tspan fill="#60a5fa" font-weight="600">RESTful Node.js CRUD</tspan></text>
+        <text x="12" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Security: <tspan fill="#34d399" font-weight="600">JWT &amp; Protected Routes</tspan></text>
+        <text x="12" y="108" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Data: <tspan fill="#f59e0b" font-weight="600">Database Persistence</tspan></text>
+
+        <!-- Progress visual -->
+        <rect x="12" y="128" width="172" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+        <rect x="12" y="128" width="130" height="6" rx="3" fill="url(#emeraldGlow)"/>
+        <text x="12" y="152" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-mono="true">Status: Live on Vercel</text>
+      </g>
+    </g>
+
+  </g>
+</svg>
